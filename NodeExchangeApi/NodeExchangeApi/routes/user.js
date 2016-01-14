@@ -3,7 +3,9 @@ var sql = require('mssql');
 var User = require('../model/User.js');
 var Address = require('../model/Address.js');
 var Phone = require('../model/Phone.js');
+var Result = require('../model/Result.js');
 var config = require('./config.js');
+var error = require('./error.js');
 /*
  * GET users listing.
  */
@@ -45,15 +47,14 @@ exports.login = function (req, res)
                 
                 extractData(tblUser, tblAddress, tblPhone, tblRating, function (user)
                 {
-                    res.json(user);
+                    var result = new Result("ok", "ok", user);
+                    res.json(result);
                 });
-                
-                
-                res.json(user);
+                                             
             }
             else
             {
-                res.json('error');
+                res.json(error.general);
             }
         });
     });
@@ -89,12 +90,13 @@ exports.getUserInfo = function (req, res)
                 
                 extractData(tblUser, tblAddress, tblPhone, tblRating, function (user)
                 {
-                    res.json(user);
+                    var result = new Result("ok", "ok", user);
+                    res.json(result);
                 });
             }
             else
             {
-                res.json('error');
+                res.json(error.general);
             }
         });
     });
@@ -126,14 +128,14 @@ exports.changePassword = function (req, res)
             if (recordsets.length > 0)
             {
                 var tblResult = recordsets[0];
-
+                
                 var row0 = tblResult[0];
-               
+                
                 res.json(row0);
             }
             else
             {
-                res.json('error');
+                res.json(error.general);
             }
         });
     });
@@ -198,8 +200,6 @@ function extractData(tblUser, tblAddress, tblPhone, tblRating, callback)
     }
     
     user.setPhones(phones);
-    
-    var ratings = new Array();
     
     for (var row of tblRating) 
     {

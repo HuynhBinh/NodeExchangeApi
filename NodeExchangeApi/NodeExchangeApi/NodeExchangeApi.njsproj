@@ -33,10 +33,12 @@
     <Compile Include="app.js" />
     <Compile Include="model\Address.js" />
     <Compile Include="model\Phone.js" />
+    <Compile Include="model\Result.js" />
     <Compile Include="model\User.js" />
     <Compile Include="model\UserComment.js" />
     <Compile Include="model\UserRating.js" />
     <Compile Include="routes\config.js" />
+    <Compile Include="routes\error.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
     <Content Include="package.json" />
