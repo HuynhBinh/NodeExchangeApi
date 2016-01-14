@@ -1,0 +1,16 @@
+{
+  "name": "NodeExchangeApi",
+  "version": "0.0.0",
+  "description": "NodeExchangeApi",
+  "main": "app.js",
+  "author": {
+    "name": "Huynh Binh PC",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "mssql": "^3.0.0",
+    "stylus": "*"
+  }
+}
